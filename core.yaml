@@ -15,3 +15,126 @@ paths:
       responses:
         '200':
           description: OK
+components:
+  schemas:
+    ProductRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: จาน
+        quantity:
+          type: integer
+          example: 100
+        cost:
+          type: number
+          example: 50.10
+        group:
+          type: string
+          example: PLATE
+    ProductResponse:
+      type: object
+      properties:
+        id: 
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: จาน
+        quantity:
+          type: integer
+          example: 100
+        cost:
+          type: number
+          example: 50.10
+        group:
+          type: string
+          example: PLATE
+
+    ProductResponseList: 
+      type: array
+      items: 
+        type: object
+        properties:
+          id: 
+            type: integer
+          name:
+            type: string
+          quantity:
+            type: integer
+          cost:
+            type: number
+          group:
+            type: string
+      example:
+        - id: 1 
+          name: จาน
+          quantity: 20
+          cost: 10.5
+          group: PLATE
+        - id: 2
+          name: ชาม
+          quantity: 50
+          cost: 12.6
+          group: BOWL
+    ProductResponse_id: 
+      type: array
+      items: 
+        type: object
+        properties:
+          id: 
+            type: integer
+          name:
+            type: string
+          quantity:
+            type: integer
+          cost:
+            type: number
+          group:
+            type: string
+      example:
+        - id: 1 
+          name: จาน
+          quantity: 20
+          cost: 10.5
+          group: PLATE
+  responses:
+    BadRequest: 
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status: 
+                type: string 
+                example: ERR01
+              message: 
+                type: string 
+                example: Invalid phone number
+    Unauthenticated: 
+      description: Unauthenticated
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status: 
+                type: string 
+                example: ERR02
+              message: 
+                type: string 
+                example: Please log in 
+    Unauthorized: 
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              status: 
+                type: string 
+                example: ERR04
+              message: 
+                type: string 
+                example: This role can't access
